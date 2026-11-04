@@ -1,0 +1,16 @@
+name: Basic Workflow
+on:
+  push:
+jobs:
+  vaidate-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repo code
+        uses: actions/checkout@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Installing dependency
+        run: npm ci
+      - name: Create production build
+        run: npm run build
